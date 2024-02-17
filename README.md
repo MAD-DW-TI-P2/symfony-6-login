@@ -46,9 +46,7 @@
 
 - Generar las claves públicas y privadas de jwt: php bin/console lexik:jwt:generate-keypair
 - Configuración del login a través de jwt en el security.yaml y añado la ruta en el config routes.yml `` api_login_check: path: /api/login_check ``.   De tal forma que me puedo recibir un token pasando un usuario y una contraseña válidas por POST a la ruta login_check.
-
 <kbd><img src="https://jorgebenitezlopez.com/github/api-login.png"><kbd>
-
 - Registrarse vía API, cojo el controlador de register, lo duplico y modifico para que lo haga vía api y devuelva un true. (Importa el persist, el coger datos, instanciar un user, etc.)
 - Podemos generar un token directamente y enviarlo nada más registrarse, ver los cambios en el controlador de register.
 <kbd><img src="https://jorgebenitezlopez.com/github/api-register.png"><kbd>
