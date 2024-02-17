@@ -45,49 +45,11 @@
 # Pasos para los endpoints de Users
 
 - Generar las claves públicas y privadas de jwt: php bin/console lexik:jwt:generate-keypair
-- Configuración del login a través de jwt en el security.yaml. De tal forma que me puedo recibir un token pasando un usuario y una contraseña válidas por POST a la ruta login_check. 
-``      login:
-            pattern: ^/api/login
-            stateless: true
-            json_login:
-                check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        api:
-            pattern:   ^/api
-            stateless: true
-            jwt: ~
-`` 
-y añado la ruta: 
-``
-api_login_check:
-    path: /api/login_check
-``
-Imagen de comprobación con Postman
+- Configuración del login a través de jwt en el security.yaml y añado la ruta en el config routes.yml `` api_login_check: path: /api/login_check ``.   De tal forma que me puedo recibir un token pasando un usuario y una contraseña válidas por POST a la ruta login_check.
 
 <kbd><img src="https://jorgebenitezlopez.com/github/api-login.png"><kbd>
 
 - Registrarse vía API, cojo el controlador de register, lo duplico y modifico para que lo haga vía api y devuelva un true. (Importa el persist, el coger datos, instanciar un user, etc.)
-``  #[Route('/apiregister', name: 'api_register')]
-    public function apiregister(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        
-        $data = json_decode($request->getContent(), true);
-        $user->setEmail($data['email']);
-        $user->setPassword(
-            $userPasswordHasher->hashPassword(
-                $user,
-                $data['password']
-            )
-        );
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $this->json((true), $status = 200, $headers = ['Access-Control-Allow-Origin'=>'*']);
-
-    }
-``
 - Podemos generar un token directamente y enviarlo nada más registrarse, ver los cambios en el controlador de register.
 <kbd><img src="https://jorgebenitezlopez.com/github/api-register.png"><kbd>
 - Con el token puedo securizar las rutas. He creado una ruta y un controlador en el SecurityController para verificar el acceso. La ruta está securizada: ``- { path: ^/apicheck, roles: ROLE_USER }``. Mando por postman en la cabecera el content-type y el token para verificar el acceso.
