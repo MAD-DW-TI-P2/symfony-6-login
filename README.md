@@ -60,7 +60,6 @@
 |---------------------|--------|------------------------------------|--------------------------------------|
 | /register          | GET    | open                               | Formulario de registro               |
 | /user              | GET    | Acceso permitido a usuarios administradores       | Listado de usuarios                  |
-| /user/[id]/edit    | GET    | Acceso permitido a usuarios admninistrdores        | Edición de un usuario                |
 | /login             | GET    | open                               | Formulario para logarse               |
 | /api/login_check   | POST   | open                               | Mandas un usuario y una contraseña y devuelve un token |
 | /apicheck     | POST    | Comprueba el token | Restringida para usuarios con token |
