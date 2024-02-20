@@ -20,7 +20,7 @@
 - composer require form (Para los formularios) 
 - composer require validator (Validaciones)
 - composer require twig-bundle (Para plantillas) 
-- composer require security-csrf api "lexik/jwt-authentication-bundle" symfony/security-bundle (Para seguridad)
+- composer require security-csrf api "lexik/jwt-authentication-bundle" symfony/security-bundle (Para seguridad. Si falla en Windows en el php.ini permitir la extension sodium. También puede ser necesaria la extensión composer requiere ext-openssl) 
 
 # Pasos para el CRUD de users
 
