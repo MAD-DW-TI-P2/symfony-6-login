@@ -20,7 +20,10 @@
 - composer require form (Para los formularios) 
 - composer require validator (Validaciones)
 - composer require twig-bundle (Para plantillas) 
-- composer require security-csrf api "lexik/jwt-authentication-bundle" symfony/security-bundle (Para seguridad. Si falla en Windows en el php.ini permitir la extension sodium. También puede ser necesaria la extensión composer requiere ext-openssl) 
+- composer require security-csrf
+- composer require api
+- composer require api symfony/security-bundle
+- composer require lexik/jwt-authentication-bundle (Para seguridad. Si falla en Windows en el php.ini permitir la extension sodium. También puede ser necesaria la extensión composer requiere ext-openssl) 
 
 # Pasos para el CRUD de users
 
@@ -44,7 +47,7 @@
 
 # Pasos para los endpoints de Users
 
-- Generar las claves públicas y privadas de jwt: php bin/console lexik:jwt:generate-keypair. En el caso de que no funcione en Windows: https://slproweb.com/products/Win32OpenSSL.html Hay que descargar OpenSSL aquí, poner la ruta en la variable de entorno y ejecutar el comando Openssl en la consola para verificar que funciona (funcionará). Luego ya podéis generar las claves en el proyecto con el comando php bin/console lexik:jwt:generate-keypair .
+- Generar las claves públicas y privadas de jwt: php bin/console lexik:jwt:generate-keypair. (En el caso de que no funcione en Windows: https://slproweb.com/products/Win32OpenSSL.html Hay que descargar OpenSSL aquí, poner la ruta en la variable de entorno y ejecutar el comando Openssl en la consola para verificar que funciona (funcionará). Luego ya podéis generar las claves en el proyecto con el comando php bin/console lexik:jwt:generate-keypair).
 - Configuración del login a través de jwt en el security.yaml (ver el código del security para pegarlo en vuestro proyecto) y añado la ruta en el config routes.yml `` api_login_check: path: /api/login_check ``.   De tal forma que me puedo recibir un token pasando un usuario y una contraseña válidas por POST a la ruta login_check.
 <kbd><img src="https://jorgebenitezlopez.com/github/api-login.png"><kbd>
 - Registrarse vía API, cojo el controlador de register, lo duplico y modifico para que lo haga vía API y devuelva un true. (Importa el persist, el coger datos, instanciar un user, etc.)
