@@ -57,6 +57,15 @@
 <kbd><img src="https://jorgebenitezlopez.com/github/api-check.png"><kbd>
 - También puedo sacar información sobre el usuario del token. Ver en el SecurityController a ruta: /apicheckinfo
 
+# Pasos para los test
+
+- Necesitamos: composer require --dev symfony/test-pack
+- Nos dice: "Write test cases in the tests/ folder, Use MakerBundle's make:test command as a shortcut! php bin/console make:test" Para crear un test: ``bin/console make:test`` y para ejecutarlos: ``php bin/phpunit``.
+- En el .env.test creo la base de datos para los test y ejecuto el esquema: ``php bin/console --env=test doctrine:schema:create``
+- Puedo crear los test de todo el controlador con el comando make:crud de la entidad que quiera. Si está creada puedo cambiar de nombre el controlador y los templates para que al crear el CRUD crear también los test.
+- Reviso el test que crea con el CRUD. El setUP limpia la base de datos y el new va a una ruta, rellena un formulario y valida que se crean los usuarios.
+
+
 # Rutas
 
 | URL path           | Método | Permisos                           | Descripción                          |
