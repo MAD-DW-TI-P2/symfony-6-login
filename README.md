@@ -12,7 +12,7 @@
 
 # Instalación de Symfony y paquetes
 
-- symfony new back --version=6.4
+- symfony new symfony-6-login --version=6.4
 - cd back
 - composer require symfony/maker-bundle --dev  (Comandos para construir)
 - composer require symfony/orm-pack (ORM para pegar la base de datos)
