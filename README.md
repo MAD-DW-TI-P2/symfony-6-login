@@ -65,6 +65,15 @@
 - Puedo crear los test de todo el controlador con el comando make:crud de la entidad que quiera. Si está creada puedo cambiar de nombre el controlador y los templates para que al crear el CRUD crear también los test.
 - Reviso el test que crea con el CRUD. El setUP limpia la base de datos y el new va a una ruta, rellena un formulario y valida que se crean los usuarios.
 
+# Cambio de contraseña
+
+- Instalar: composer require symfonycasts/reset-password-bundle 
+- Instalar: composer require symfony/mailer
+- Ejecutar: php bin/console make:reset-password
+- Actualizar BD: php bin/console doctrine:schema:update --force
+- Make sure your MAILER_DSN env var has the correct settings.
+- Create a "forgot your password link" to the app_forgot_password_request route on your login form.
+
 
 # Rutas
 
@@ -75,3 +84,4 @@
 | /login             | GET    | open                               | Formulario para logarse               |
 | /api/login_check   | POST   | open                               | Mandas un usuario y una contraseña y devuelve un token |
 | /apicheck     | POST    | Comprueba el token | Restringida para usuarios con token |
+| /reset-password     | GET    | Cambio de contraseña  | Para todas |
