@@ -22,7 +22,7 @@
 - composer require twig-bundle (Para plantillas) 
 - composer require security-csrf
 - composer require api
-- composer require api symfony/security-bundle
+- composer require symfony/security-bundle
 - composer require lexik/jwt-authentication-bundle (Para seguridad. Si falla en Windows en el php.ini permitir la extension sodium. También puede ser necesaria la extensión composer requiere ext-openssl) 
 
 # Pasos para el CRUD de users
